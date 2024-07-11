@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // For using Clipboard
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,26 +27,26 @@ class TimeCalculator extends StatefulWidget {
 class _TimeCalculatorState extends State<TimeCalculator> {
   final TextEditingController _controller = TextEditingController();
   String _output = "";
-  int _waitTime = 90; // Default wait time is 90 seconds
+  int _waitTime = 90;
 
   void calculateTime() {
     try {
       if (_controller.text.length != 4) {
-        throw FormatException('正確に4桁で入力してください。');
+        throw FormatException('正確に4桁で入力。');
       }
 
       int inputMinutes = int.parse(_controller.text.substring(0, 2));
       int inputSeconds = int.parse(_controller.text.substring(2, 4));
 
       if (inputMinutes > 59 || inputSeconds > 59) {
-        throw FormatException('分または秒が範囲外です。0から59の間で入力してください。');
+        throw FormatException('分または秒が範囲外。0から59の間で入力。');
       }
 
       int totalInputSeconds = inputMinutes * 60 + inputSeconds;
       int activationTime = totalInputSeconds - _waitTime;
 
       if (activationTime < 0) {
-        throw FormatException('入力時間が短すぎます。');
+        throw FormatException('入力時間が短すぎ。');
       }
 
       int activationMinutes = activationTime ~/ 60;
@@ -76,7 +76,7 @@ class _TimeCalculatorState extends State<TimeCalculator> {
             TextField(
               controller: _controller,
               decoration: InputDecoration(
-                labelText: '時間をmmss形式で入力してください (例: 1123)',
+                labelText: '時間をmmss形式で入力 (例: 1123)',
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear),
                   onPressed: () {
@@ -105,7 +105,7 @@ class _TimeCalculatorState extends State<TimeCalculator> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: calculateTime,
-              child: const Text('計算する'),
+              child: const Text('計算'),
             ),
             const SizedBox(height: 20),
             const Text(
