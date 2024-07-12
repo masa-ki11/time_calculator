@@ -85,6 +85,9 @@ class _TimeCalculatorState extends State<TimeCalculator> {
                 ),
               ),
               keyboardType: TextInputType.number,
+              onSubmitted: (value) {
+                calculateTime();
+              },
             ),
             const SizedBox(height: 20),
             DropdownButton<int>(
